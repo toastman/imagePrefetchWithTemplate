@@ -1,0 +1,17 @@
+{
+  "name": "imagePreloaderWithTemplate",
+  "version": "0.0.0",
+  "authors": [
+    "andriy vandakurov <andriy.vandakurov@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}

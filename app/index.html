@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Image prefetch with template</title>
+
+  <template id="templateImage">
+    <figure>
+      <img src="">
+      <figcaption></figcaption>
+    </figure>
+  </template>
+
+</head>
+<body>
+  There will be the list of images after you click <a href="javascript:void(0)" class="show-prefetched-images">this</a> link!
+  <div class="image-list"></div>
+  <script>
+    ;(function(){
+      "use strict";
+
+      var data = [
+        {
+          "url" : "http://www.fubiz.net/wp-content/uploads/2014/04/4-Photo-by-Paul-Colley.jpg",
+          "caption":"This is the sea."
+        },
+        {
+          "url" : "http://static.ddmcdn.com/gif/storymaker-best-hubble-space-telescope-images-20092-514x268.jpg",
+          "caption":"This is space."
+        },
+        {
+          "url" : "http://static3.businessinsider.com/image/52a0bbfd6bb3f7961363819e/the-most-amazing-satellite-images-of-the-year.jpg",
+          "caption":"This is the island."
+        }
+      ],
+      templateArr = [],
+      templateImage = document.querySelector('#templateImage'),
+      containerImageList = document.querySelector(".image-list");
+
+      data.forEach(function (el) {
+        templateImage.content.querySelector('img').src = el.url;
+        templateImage.content.querySelector('figcaption').textContent = el.caption;
+        templateArr.push(document.importNode(templateImage.content, true));
+      });
+
+      document.querySelector('.show-prefetched-images').onclick = function () {
+        templateArr.forEach(function (el) {
+          containerImageList.appendChild(el);
+        })
+      };
+
+    })();
+  </script>
+</body>
+</html>
